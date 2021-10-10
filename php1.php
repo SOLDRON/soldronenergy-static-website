@@ -12,16 +12,16 @@ if($con->connect_error)
 {
 die("failed conection".$con->connect_error);
 }
-if(!empty($_POST["Name"])and!empty($_POST["Email"]))
+if(!empty($_POST["name"])and!empty($_POST["email"]))
 {
-	$name=$_POST["Name"];
-	$email=$_POST["Email"];
-	$name=mysqli_real_escape_string($con,$Name);
-	$email=mysqli_real_escape_string($con,$Email);
-	$stmt=$con->prepare("INSERT INTO user_data (Name,Email) VALUES(?,?)");
+	$name=$_POST["name"];
+	$email=$_POST["email"];
+	$name=mysqli_real_escape_string($con,$name);
+	$email=mysqli_real_escape_string($con,$email);
+	$stmt=$con->prepare("INSERT INTO user_data (name,email) VALUES(?,?)");
 	if($stmt)
 	{
-	$stmt->bind_param("ss",$Name,$Email);
+	$stmt->bind_param("ss",$name,$email);
     $stmt->	execute();
 	$stmt->close();
 	$return["error"]=false;
